@@ -31,9 +31,9 @@ toggleSelection = (selection) ->
   selection.setBufferRange(originalRange)
 
 toggleTask = (taskText) ->
-  if taskText.search(/\- \[ \]/) != -1
-    taskText.replace /\- \[ \]/, "- [x]"
-  else if taskText.search(/\- \[x\]/) != -1
-    taskText.replace /\- \[x\]/, "- [ ]"
+  if taskText.search(/([-+*][ \t]+)\[\s\]/) != -1
+    taskText.replace /([-+*][ \t]+)\[\s\]/, "$1[x]"
+  else if taskText.search(/([-+*][ \t]+)\[[xX]\]/) != -1
+    taskText.replace /([-+*][ \t]+)\[[xX]\]/, "$1[ ]"
   else
     taskText
